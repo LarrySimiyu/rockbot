@@ -2,12 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 
 
-import NowPlaying from './components/NowPlaying'
+import Navigation from './components/Navigation'
+import Paths from './components/Paths'
 
 function App() {
   return (
     <div className="App">
-      <NowPlaying />
+      <Paths />
+      <Navigation />
      
     </div>
   );

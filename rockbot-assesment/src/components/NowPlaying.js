@@ -66,7 +66,7 @@ export default function NowPlaying(){
                 return <p>{queItem.sArtist} : {queItem.sSong} : {queItem.iLikes}</p>
             })}
 
-            <button onClick={updateData}>update</button>
+            {/* <button onClick={updateData}>update</button> */}
 
             
 
