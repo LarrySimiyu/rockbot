@@ -7,9 +7,13 @@ import Paths from './components/Paths'
 
 function App() {
   return (
-    <div className="App">
+    <div className="mainContainer">
+      <div className="displayedContent">
       <Paths />
       <Navigation />
+
+      </div>
+      
      
     </div>
   );
