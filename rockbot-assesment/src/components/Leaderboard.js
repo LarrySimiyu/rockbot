@@ -25,30 +25,37 @@ export default function Leaderboard() {
       <div className="rockbotHeader">
         <p>Mini Rockbot</p>
       </div>
-      <div className="topDJsHeader">Top DJ's</div>
-      <div>
-        {topArtists.map((artist) => {
-          return (
-            //   <div className="artist">{artist.sArtist}</div>
-            <img
-              src={artist.sArtistImage}
-              className="topArtistImage"
-              alt="Top Artist"
-            ></img>
-          );
-        })}
+      <div className="topArtistsSection">
+        <div className="topArtistsHeader">Top Artists</div>
+
+        <div className="topArtistsContainer">
+          {topArtists.map((artist) => {
+            return (
+              //   <div className="artist">{artist.sArtist}</div>
+              <img
+                src={artist.sArtistImage}
+                className="topArtistImage"
+                alt="Top Artist"
+              ></img>
+            );
+          })}
+        </div>
       </div>
-      P<div className="topArtistsHeader">Top Artists</div>
-      <div>
-        {topDJs.map((dj) => {
-          return (
-            <img
-              src={dj.sArtistImage}
-              className="topDjImage"
-              alt="Top DJ"
-            ></img>
-          );
-        })}
+
+      <div className="topDJsSection">
+        <div className="topDJsHeader">Top DJ's</div>
+
+        <div className="topDJsContainer">
+          {topDJs.map((dj) => {
+            return (
+              <img
+                src={dj.sArtistImage}
+                className="topDjImage"
+                alt="Top DJ"
+              ></img>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

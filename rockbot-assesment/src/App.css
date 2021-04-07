@@ -41,15 +41,13 @@
   text-decoration: none;
   color: black;
   font-weight: bold;
-  
+
   /* display: flex;
   justify-content: center; */
   border-radius: 20px;
   background: #fafafa;
   box-shadow: 8px -8px 7px #e9e9e9, -8px 8px 7px #ffffff;
 }
-
-
 
 /* rockbot header */
 .rockbotHeader {
@@ -61,6 +59,7 @@
   background-color: #55b9f3;
   padding-bottom: 10px;
   padding-top: 1px;
+  width: 100%;
 }
 
 /* now playing */
@@ -147,4 +146,95 @@
 .quedArtist {
   font-weight: bold;
   font-size: 12px;
+}
+
+/* leaderboard component */
+.topArtistsSection {
+  padding-top: 2px;
+  margin-top: 5px;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: inset -5px -5px 10px #dfdfdf, inset 5px 5px 10px #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 170px;
+}
+
+.topArtistsHeader {
+  display: flex;
+  padding-left: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  background: #fafafa;
+  box-shadow: 8px -8px 7px #e9e9e9, -8px 8px 7px #ffffff;
+  margin-left: 7px;
+  margin-right: 7px;
+  height: 25px;
+  justify-content: flex-start;
+  padding-top: 7px;
+  margin-top: 10px;
+}
+
+
+
+.topArtistsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  height: 150px;
+  justify-content: space-evenly;
+  margin-left: 20px;
+  margin-top: 2px;
+}
+
+.topDJsSection {
+  padding-top: 2px;
+  margin-top: 5px;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: inset -5px -5px 10px #dfdfdf, inset 5px 5px 10px #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.topDJsHeader {
+  display: flex;
+  padding-left: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  background: #fafafa;
+  box-shadow: 8px -8px 7px #e9e9e9, -8px 8px 7px #ffffff;
+  margin-left: 7px;
+  margin-right: 7px;
+  height: 25px;
+  justify-content: flex-start;
+  padding-top: 7px;
+  margin-top: 10px;
+
+}
+
+.topDJsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  height: 150px;
+  justify-content: space-evenly;
+  margin-left: 20px;
+  margin-top: 2px;
+}
+
+.topArtistImage {
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #55b9f3
+}
+
+.topDjImage {
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #55b9f3
 }
