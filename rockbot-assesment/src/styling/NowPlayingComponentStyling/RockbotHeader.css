@@ -1,12 +1,12 @@
 /* rockbot header */
 .rockbotHeader {
-    display: flex;
-    justify-content: center;
-    height: 30px;
-    font-weight: bold;
-    color: white;
-    background-color: #55b9f3;
-    padding-bottom: 10px;
-    padding-top: 1px;
-    width: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  font-weight: bold;
+  color: white;
+  background-color: #55b9f3;
+  padding-bottom: 10px;
+  padding-top: 1px;
+  width: 100%;
+}
