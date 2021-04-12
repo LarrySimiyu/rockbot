@@ -2,7 +2,10 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+
+
 export default function Navigation() {
+
   return (
     <header>
       <div className="tabBar">
@@ -10,7 +13,7 @@ export default function Navigation() {
           Now Playing
         </Link>
 
-        <Link to="/leaderboard" className="tab">
+        <Link to="/leaderboard" className="tab" >
           Leaderboard
         </Link>
       </div>

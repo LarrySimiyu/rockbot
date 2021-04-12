@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import "./styling/LeaderBoardComponentStyling/TopArtistsSection.css";
@@ -13,6 +12,7 @@ import Navigation from "./components/Navigation";
 import Paths from "./components/Paths";
 
 function App() {
+
   return (
     <div className="mainContainer">
       <div className="displayedContent">
