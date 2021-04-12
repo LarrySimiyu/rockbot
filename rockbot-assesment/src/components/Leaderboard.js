@@ -10,7 +10,6 @@ const topArtistsEndPoint = "https://api.rockbot.com/v3/engage/top_artists"
 
 export default function Leaderboard({que, setQue}) {
   const [topArtists, setTopArtists] = useState([]);
-  const [topDJs, setTopDjs] = useState([]);
 
   const fetchData = () => {
     return axios.get(topArtistsEndPoint, {
@@ -26,7 +25,7 @@ export default function Leaderboard({que, setQue}) {
 
   const handleQueue = (artist) => {
     console.log(artist)
-    
+
 
   }
 
@@ -35,7 +34,6 @@ export default function Leaderboard({que, setQue}) {
   useEffect(() => {
     fetchData().then((response) => {
       setTopArtists(response);
-      setTopDjs(response.aTopDJs);
     });
   }, []);
 
@@ -61,22 +59,6 @@ export default function Leaderboard({que, setQue}) {
           })}
         </div>
       </div>
-
-      {/* <div className="topDJsSection">
-        <div className="topDJsHeader">Top DJ's</div>
-
-        <div className="topDJsContainer">
-          {topDJs.map((dj) => {
-            return (
-              <img
-                src={dj.sArtistImage}
-                className="topDjImage"
-                alt="Top DJ"
-              ></img>
-            );
-          })}
-        </div>
-      </div> */}
     </div>
   );
 }
