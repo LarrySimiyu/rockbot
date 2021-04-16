@@ -3,13 +3,13 @@ import axios from "axios";
 
 
 
-// const ENDPOINT = "https://s.rockbot.com/temp/now_playing.json";
 const topArtistsEndPoint = "https://api.rockbot.com/v3/engage/top_artists"
-
+const requestArtistEndPoint = "https://api.rockbot.com/v3/engage/request_artist"
 
 
 export default function Leaderboard({que, setQue}) {
   const [topArtists, setTopArtists] = useState([]);
+  const [selectedArtist, setSelectedArtist] = useState()
 
   const fetchData = () => {
     return axios.get(topArtistsEndPoint, {
@@ -24,9 +24,30 @@ export default function Leaderboard({que, setQue}) {
   };
 
   const handleQueue = (artist) => {
-    console.log(artist)
+    console.log(artist.artist_id, "artist id")
+    console.log(process.env.REACT_APP_API_KEY)
+    setSelectedArtist(artist.artist_id)
 
 
+  }
+
+  const requestArtist=()=> {
+    console.log(selectedArtist, "final selection")
+
+     return axios.post(requestArtistEndPoint, {}, {
+      headers: {
+        Authorization: process.env.REACT_APP_API_KEY
+      },
+      params: {
+        artist_id: selectedArtist
+      }
+    }).then(( { data }) => {
+      console.log(data, "qued artist")
+      return data
+    }).catch(error => {
+      console.log(error)
+      return error
+    })
   }
 
  
@@ -57,8 +78,11 @@ export default function Leaderboard({que, setQue}) {
               />
             );
           })}
+
         </div>
       </div>
+      <button onClick={() => requestArtist()}>Request Artist</button>
+
     </div>
   );
 }
