@@ -120,7 +120,15 @@ export default function Leaderboard({ que, setQue }) {
         </form>
         <div className="searchResults">
           {searchResults.map((artist, idx) => {
-            return <p key={idx}>{artist.artist}</p>;
+            return (
+              <div 
+              key={artist.artist_id} 
+              onClick={() => handleQueue(artist)}
+              >
+                <img src={artist.artwork_small} alt="Artist Profile" />
+                {artist.artist}
+              </div>
+            );
           })}
         </div>
       </div>
