@@ -12,10 +12,10 @@
 }
 
 .displayedContent {
-  border: 2.4px solid black;
+  border: 2.4px solid red;
   border-radius: 4px;
   margin-top: 50px;
-  height: 475px;
+  height: 496px;
   width: 299px;
   display: flex;
   flex-direction: column;

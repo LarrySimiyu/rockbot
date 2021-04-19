@@ -127,7 +127,7 @@ export default function NowPlaying({ que, setQue }) {
   return (
     <div className="nowPlayingPage">
       <div className="rockbotHeader">
-        <p>Mini Rockbot</p>
+        <div>Mini Rockbot</div>
       </div>
       <div className="nowPlayingInfo">
         <img
@@ -142,7 +142,7 @@ export default function NowPlaying({ que, setQue }) {
           <div className="artistAndSongContainer">
             <div className="nowPlayingArtist">{nowPlaying.artist} </div>
             <div className="nowPlayingSong">{nowPlaying.song}</div>
-          </div>
+          </div> 
 
           <button onClick={() => downVoteNowPlaying()} className="dislike">
             <FontAwesomeIcon icon={faThumbsDown} color="white" size="2x"/>
@@ -161,12 +161,15 @@ export default function NowPlaying({ que, setQue }) {
                   <div className="quedSong">{queItem.song}</div>
                 </div>
                 <div className="quedLikes"> + {queItem.likes}</div>
+                <div className="buttonContainer">
                 <button onClick={() => upVoteQueue(queItem.pick_id)}>
-                  <FontAwesomeIcon icon={faThumbsUp} />
+                  <FontAwesomeIcon icon={faThumbsUp} color="white" size=".5x" className="quedLikeButton"/>
                 </button>
                 <button onClick={() => downVoteQueue(queItem.pick_id)}>
-                  <FontAwesomeIcon icon={faThumbsDown} />
+                  <FontAwesomeIcon icon={faThumbsDown}  color="white" size=".5x"/>
                 </button>
+                </div>
+                
               </div>
             );
           })}

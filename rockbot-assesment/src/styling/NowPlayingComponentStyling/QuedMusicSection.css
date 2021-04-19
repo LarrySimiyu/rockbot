@@ -17,6 +17,9 @@
   height: 25px;
   justify-content: center;
   padding-top: 7px;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .queItemsContainer {
@@ -33,7 +36,10 @@
 .quedArtistAndSongContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  height: 50px;
+  width: 80%;
+  align-items: flex-start;
 }
 .quedItems {
   display: flex;
@@ -43,17 +49,21 @@
 }
 
 .quedLikes {
-  margin-right: 10px;
   font-weight: bold;
+  font-size: 15px;
   color: green;
-  border-radius: 50px;
   padding: 5px;
+  display: flex;
+  flex-direction: row;
+  width: 12%;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .quedArtist {
   font-weight: bold;
-  font-size: 19px;
-  color: #55b9f3;
+  font-size: 15px;
+  color: white;
   display: flex;
   padding-bottom: 1px;
 }
@@ -62,4 +72,27 @@
   display: flex;
   font-weight: bold;
   font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+
 }
+
+.buttonContainer {
+  display: flex;
+
+  
+}
+
+.buttonContainer button .fa-thumbs-down {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 10px;
+
+}
+
+.buttonContainer button .fa-thumbs-up {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+
