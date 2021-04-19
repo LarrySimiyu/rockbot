@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  fas,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 const nowPlayingEndPoint = "https://api.rockbot.com/v3/engage/now_playing";
 const voteUpEndPoint = "https://api.rockbot.com/v3/engage/vote_up";
@@ -7,6 +13,7 @@ const voteDownEndPoint = "https://api.rockbot.com/v3/engage/vote_down";
 
 export default function NowPlaying({ que, setQue }) {
   const [nowPlaying, setnowPlaying] = useState({});
+  const [timer, setTimer] = useState(false);
 
   const fetchData = () => {
     return axios
@@ -111,22 +118,6 @@ export default function NowPlaying({ que, setQue }) {
       });
   };
 
-  // update data function checks for the length of the current que
-  // if length is not zero we set the now playing state to be the first element in the que
-  // from there we update our que array and change setdidupdate state to true
-  // const updateData = () => {
-  //   if (que.length !== 0) {
-  //     setnowPlaying(que[0]);
-  //     console.log(nowPlaying);
-  //     que.shift();
-  //     console.log(nowPlaying.remaining)
-  //   }
-  // };
-
-  // setInterval(() => {
-  //    fetchData()
-  // }, 10000)
-
   // data is fetched when component mounts and set to state
   useEffect(() => {
     fetchData();
@@ -144,11 +135,18 @@ export default function NowPlaying({ que, setQue }) {
           className="artistImage"
           alt="Art Work"
         />
-        <div className="artistAndSongContainer">
-          <div className="nowPlayingArtist">{nowPlaying.artist} </div>
-          <div className="nowPlayingSong">{nowPlaying.song}</div>
-          <button onClick={() => upVoteNowPlaying()}>Up</button>
-          <button onClick={() => downVoteNowPlaying()}>Down</button>
+        <div className="nowPlayingDetails">
+          <button onClick={() => upVoteNowPlaying()}>
+            <FontAwesomeIcon icon={faThumbsUp} color="white" size="2x"/>
+          </button>
+          <div className="artistAndSongContainer">
+            <div className="nowPlayingArtist">{nowPlaying.artist} </div>
+            <div className="nowPlayingSong">{nowPlaying.song}</div>
+          </div>
+
+          <button onClick={() => downVoteNowPlaying()} className="dislike">
+            <FontAwesomeIcon icon={faThumbsDown} color="white" size="2x"/>
+          </button>
         </div>
       </div>
 
@@ -163,9 +161,11 @@ export default function NowPlaying({ que, setQue }) {
                   <div className="quedSong">{queItem.song}</div>
                 </div>
                 <div className="quedLikes"> + {queItem.likes}</div>
-                <button onClick={() => upVoteQueue(queItem.pick_id)}>Up</button>
+                <button onClick={() => upVoteQueue(queItem.pick_id)}>
+                  <FontAwesomeIcon icon={faThumbsUp} />
+                </button>
                 <button onClick={() => downVoteQueue(queItem.pick_id)}>
-                  Down
+                  <FontAwesomeIcon icon={faThumbsDown} />
                 </button>
               </div>
             );

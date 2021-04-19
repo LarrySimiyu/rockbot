@@ -1,5 +1,5 @@
-// TODO: [] Update now playing and que data every 30 seconds 
-// TODO: [] Request - user can find artists via
-    // TODO: [] Top Artists
-    // TODO: [] Search
-    // TODO: [] Select artist and request that they be added to queue
+// TODO: [x] Request - user can find artists via
+    // TODO: [x] Top Artists
+    // TODO: [x] Search
+    // TODO: [x] Select artist and request that they be added to queue
+// TODO: [x] Add liking and disliking functionality
