@@ -9,9 +9,9 @@ const searchArtistEndPoint = "https://api.rockbot.com/v3/engage/search_artists";
 
 export default function Leaderboard({ que, setQue }) {
   const [topArtists, setTopArtists] = useState([]);
-  const [selectedArtist, setSelectedArtist] = useState();
-  const [searchInput, setSearchInput] = useState("");
+  const [selectedArtist, setSelectedArtist] = useState(null);
 
+  const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchData = () => {
@@ -29,7 +29,9 @@ export default function Leaderboard({ que, setQue }) {
 
   const handleQueue = (artist) => {
     console.log(artist.artist_id, "artist id");
-    setSelectedArtist(artist.artist_id);
+    selectedArtist === artist.artist_id
+      ? setSelectedArtist(null)
+      : setSelectedArtist(artist.artist_id);
   };
 
   const handleSearchInput = (event) => {
@@ -96,43 +98,68 @@ export default function Leaderboard({ que, setQue }) {
         <p>Mini Rockbot</p>
       </div>
       <div className="topArtistsSection">
-        <div className="topArtistsHeader">Top Artists</div>
+        <form onSubmit={handleSubmitSearch} className="artistSearchContainer">
+          <input
+            onChange={handleSearchInput}
+            value={searchInput}
+            className="artistSearchInput"
+            placeholder="Search Music"
+          />
+        </form>
+        <div className="topArtistHeaderContainer">
+          <div className="topArtistsHeader">Top Artists</div>
+          <button
+            onClick={() => requestArtist()}
+            className={
+              selectedArtist !== null ? "filledRequestButton" : "requestButton"
+            }
+          >
+            Request Artist
+          </button>
+        </div>
 
-        <div className="topArtistsContainer">
-          {topArtists
-            .filter((artist, idx) => idx < 5)
-            .map((artist) => {
+        {searchResults.length > 0 ? (
+          <div className="topArtistsContainer">
+            {searchResults.map((artist) => {
               return (
-                <img
-                  src={artist.artwork_small}
-                  className="topArtistImage"
-                  alt="Top Artist"
-                  onClick={() => handleQueue(artist)}
-                  key={artist.artist_id}
-                />
+                <div className="topArtistInfo" key={artist.artist_id}>
+                  <img
+                    src={artist.artwork_small}
+                    alt="Top Artist"
+                    onClick={() => handleQueue(artist)}
+                    className={
+                      selectedArtist === artist.artist_id
+                        ? "selectedArtistImage"
+                        : "topArtistImage"
+                    }
+                  />
+                  <div className="topArtistName">{artist.artist}</div>
+                </div>
               );
             })}
-        </div>
+          </div>
+        ) : (
+          <div className="topArtistsContainer">
+            {topArtists.map((artist) => {
+              return (
+                <div className="topArtistInfo" key={artist.artist_id}>
+                  <img
+                    src={artist.artwork_small}
+                    alt="Top Artist"
+                    onClick={() => handleQueue(artist)}
+                    className={
+                      selectedArtist === artist.artist_id
+                        ? "selectedArtistImage"
+                        : "topArtistImage"
+                    }
+                  />
+                  <div className="topArtistName">{artist.artist}</div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
-      <div className="searchContainer">
-        <form onSubmit={handleSubmitSearch}>
-          <input onChange={handleSearchInput} value={searchInput} />
-        </form>
-        <div className="searchResults">
-          {searchResults.map((artist, idx) => {
-            return (
-              <div 
-              key={artist.artist_id} 
-              onClick={() => handleQueue(artist)}
-              >
-                <img src={artist.artwork_small} alt="Artist Profile" />
-                {artist.artist}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <button onClick={() => requestArtist()}>Request Artist</button>
     </div>
   );
 }

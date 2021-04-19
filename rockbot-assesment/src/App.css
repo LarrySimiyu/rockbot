@@ -5,7 +5,6 @@
 /* main container */
 
 .mainContainer {
-  text-align: center;
   height: 700px;
   display: flex;
   justify-content: center;
