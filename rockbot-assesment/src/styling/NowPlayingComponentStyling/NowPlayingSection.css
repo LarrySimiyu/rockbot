@@ -52,7 +52,6 @@
   border: 3px solid white;
 }
 
-
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -68,5 +67,5 @@ button {
 }
 
 .fa-thumbs-down {
-  transform: scaleX(-1)
+  transform: scaleX(-1);
 }

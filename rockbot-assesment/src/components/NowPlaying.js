@@ -12,7 +12,7 @@ const voteDownEndPoint = "https://api.rockbot.com/v3/engage/vote_down";
 export default function NowPlaying({ que, setQue }) {
   const [nowPlaying, setnowPlaying] = useState({});
 
-  // To fetch now plasying data, set authorization header from .env
+  // To fetch now plasying data, set authorization header API KEY from .env
   // Params requires a key of queue and a value of 1 for response object to return
   // queued artists and songs
 

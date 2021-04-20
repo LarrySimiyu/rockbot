@@ -7,12 +7,7 @@
   padding-bottom: 11px; */
   background: #2f2f2f;
   background-color: rgba(37, 37, 37, 1);
-
 }
-
-/* header {
-  justify-self: flex-end;
-} */
 
 .tab {
   width: 50%;
@@ -24,11 +19,3 @@
   display: flex;
   justify-content: center;
 }
-
-
-
-
-
-
-
-

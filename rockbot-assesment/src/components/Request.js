@@ -12,7 +12,8 @@ export default function Request({ que, setQue }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const fetchData = () => {
+  // To fetch top artists, pass API key to authorization header.
+  const fetchTopArtists = () => {
     return axios
       .get(topArtistsEndPoint, {
         headers: {
@@ -20,13 +21,13 @@ export default function Request({ que, setQue }) {
         },
       })
       .then(({ data }) => {
-        console.log(data.response, "updated return");
         return data.response;
       });
   };
 
+  // HandleQueue accepts artist data and
+  // sets the current selected artist from their artist_id
   const handleQueue = (artist) => {
-    console.log(artist.artist_id, "artist id");
     selectedArtist === artist.artist_id
       ? setSelectedArtist(null)
       : setSelectedArtist(artist.artist_id);
@@ -36,6 +37,7 @@ export default function Request({ que, setQue }) {
     setSearchInput(event.target.value);
   };
 
+  // To search for music, pass authorization header API key with params containing the user searchInput
   const handleSubmitSearch = (event) => {
     event.preventDefault();
 
@@ -49,7 +51,6 @@ export default function Request({ que, setQue }) {
         },
       })
       .then(({ data }) => {
-        console.log(data.response, " successfully submitted search");
         setSearchInput("");
         return data.response;
       })
@@ -58,9 +59,8 @@ export default function Request({ que, setQue }) {
       });
   };
 
+  // Requested artist is passed by passing the current selected artist state into params key artist_id
   const requestArtist = () => {
-    console.log(selectedArtist, "selected artist");
-
     return axios
       .post(
         requestArtistEndPoint,
@@ -75,17 +75,15 @@ export default function Request({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        console.log(data, "qued artist");
         return data;
       })
       .catch((error) => {
-        console.log(error);
         return error;
       });
   };
 
   useEffect(() => {
-    fetchData().then((response) => {
+    fetchTopArtists().then((response) => {
       setTopArtists(response);
     });
   }, []);
@@ -116,6 +114,11 @@ export default function Request({ que, setQue }) {
           </button>
         </div>
 
+        {/* 
+          Conditionaly render request page based off search result length.
+          When search result state has yet to be set to any value, by default request component
+          will render topArtists
+        */}
         {searchResults.length > 0 ? (
           <div className="artistsContainer">
             {searchResults.map((artist) => {
