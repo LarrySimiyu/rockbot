@@ -5,17 +5,19 @@
 /* main container */
 
 .mainContainer {
-  height: 700px;
+  min-height: 700px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  
 }
 
 .displayedContent {
-  border: 2.4px solid red;
   border-radius: 4px;
-  margin-top: 50px;
   height: 496px;
   width: 299px;
   display: flex;
   flex-direction: column;
+  border-radius: 3px;
+
 }

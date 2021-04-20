@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
 
 const topArtistsEndPoint = "https://api.rockbot.com/v3/engage/top_artists";
 const requestArtistEndPoint =
   "https://api.rockbot.com/v3/engage/request_artist";
 const searchArtistEndPoint = "https://api.rockbot.com/v3/engage/search_artists";
 
-export default function Leaderboard({ que, setQue }) {
+export default function Request({ que, setQue }) {
   const [topArtists, setTopArtists] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
-
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -93,11 +91,11 @@ export default function Leaderboard({ que, setQue }) {
   }, []);
 
   return (
-    <div className="leaderBoard">
+    <div className="requestsPage">
       <div className="rockbotHeader">
         <p>Mini Rockbot</p>
       </div>
-      <div className="topArtistsSection">
+      <div className="artistsSection">
         <form onSubmit={handleSubmitSearch} className="artistSearchContainer">
           <input
             onChange={handleSearchInput}
@@ -106,8 +104,8 @@ export default function Leaderboard({ que, setQue }) {
             placeholder="Search Music"
           />
         </form>
-        <div className="topArtistHeaderContainer">
-          <div className="topArtistsHeader">Top Artists</div>
+        <div className="artistsHeaderContainer">
+          <div className="artistsHeader">Top Artists</div>
           <button
             onClick={() => requestArtist()}
             className={
@@ -119,41 +117,41 @@ export default function Leaderboard({ que, setQue }) {
         </div>
 
         {searchResults.length > 0 ? (
-          <div className="topArtistsContainer">
+          <div className="artistsContainer">
             {searchResults.map((artist) => {
               return (
-                <div className="topArtistInfo" key={artist.artist_id}>
+                <div className="artistInfo" key={artist.artist_id}>
                   <img
                     src={artist.artwork_small}
-                    alt="Top Artist"
+                    alt="Artist"
                     onClick={() => handleQueue(artist)}
                     className={
                       selectedArtist === artist.artist_id
                         ? "selectedArtistImage"
-                        : "topArtistImage"
+                        : "artistImage"
                     }
                   />
-                  <div className="topArtistName">{artist.artist}</div>
+                  <div className="artistName">{artist.artist}</div>
                 </div>
               );
             })}
           </div>
         ) : (
-          <div className="topArtistsContainer">
+          <div className="artistsContainer">
             {topArtists.map((artist) => {
               return (
-                <div className="topArtistInfo" key={artist.artist_id}>
+                <div className="artistInfo" key={artist.artist_id}>
                   <img
                     src={artist.artwork_small}
-                    alt="Top Artist"
+                    alt="Artist"
                     onClick={() => handleQueue(artist)}
                     className={
                       selectedArtist === artist.artist_id
                         ? "selectedArtistImage"
-                        : "topArtistImage"
+                        : "artistImage"
                     }
                   />
-                  <div className="topArtistName">{artist.artist}</div>
+                  <div className="artistName">{artist.artist}</div>
                 </div>
               );
             })}

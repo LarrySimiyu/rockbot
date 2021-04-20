@@ -1,7 +1,6 @@
 import "./App.css";
 
-import "./styling/LeaderBoardComponentStyling/TopArtistsSection.css";
-import "./styling/LeaderBoardComponentStyling/TopDJsSection.css";
+import "./styling/RequestComponentStyling/Requests.css";
 
 import "./styling/NowPlayingComponentStyling/NowPlayingSection.css";
 import "./styling/NowPlayingComponentStyling/QuedMusicSection.css";
