@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  fas,
-  faThumbsUp,
-  faThumbsDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 const nowPlayingEndPoint = "https://api.rockbot.com/v3/engage/now_playing";
 const voteUpEndPoint = "https://api.rockbot.com/v3/engage/vote_up";
@@ -13,7 +9,6 @@ const voteDownEndPoint = "https://api.rockbot.com/v3/engage/vote_down";
 
 export default function NowPlaying({ que, setQue }) {
   const [nowPlaying, setnowPlaying] = useState({});
-  const [timer, setTimer] = useState(false);
 
   const fetchData = () => {
     return axios
@@ -30,8 +25,6 @@ export default function NowPlaying({ que, setQue }) {
         return response;
       })
       .then((response) => {
-        console.log(response.queue, "current queue");
-        console.log(response.now_playing.duration, "current duration");
         setQue(response.queue);
         setnowPlaying(response.now_playing);
       });
@@ -52,7 +45,6 @@ export default function NowPlaying({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        console.log(data, "upvoted now playing");
         return data.response;
       });
   };
@@ -72,7 +64,6 @@ export default function NowPlaying({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        console.log(data, "down voted now playing");
         return data.response;
       });
   };
@@ -92,8 +83,6 @@ export default function NowPlaying({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        console.log(pick_id, "que pick_id");
-        console.log(data, "upvoted now playing");
         return data.response;
       });
   };
@@ -113,7 +102,6 @@ export default function NowPlaying({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        console.log(data, "down voted now playing");
         return data.response;
       });
   };
@@ -121,7 +109,6 @@ export default function NowPlaying({ que, setQue }) {
   // data is fetched when component mounts and set to state
   useEffect(() => {
     fetchData();
-    // check for a change in the didUpdate value,  if state is changed rerender the component
   }, []);
 
   return (
@@ -131,21 +118,21 @@ export default function NowPlaying({ que, setQue }) {
       </div>
       <div className="nowPlayingInfo">
         <img
-          src={nowPlaying.artwork_small}
+          src={nowPlaying?.artwork_small}
           className="artistImage"
           alt="Art Work"
         />
         <div className="nowPlayingDetails">
           <button onClick={() => upVoteNowPlaying()}>
-            <FontAwesomeIcon icon={faThumbsUp} color="white" size="2x"/>
+            <FontAwesomeIcon icon={faThumbsUp} color="white" size="2x" />
           </button>
           <div className="artistAndSongContainer">
             <div className="nowPlayingArtist">{nowPlaying.artist} </div>
             <div className="nowPlayingSong">{nowPlaying.song}</div>
-          </div> 
+          </div>
 
           <button onClick={() => downVoteNowPlaying()} className="dislike">
-            <FontAwesomeIcon icon={faThumbsDown} color="white" size="2x"/>
+            <FontAwesomeIcon icon={faThumbsDown} color="white" size="2x" />
           </button>
         </div>
       </div>
@@ -162,14 +149,22 @@ export default function NowPlaying({ que, setQue }) {
                 </div>
                 <div className="quedLikes"> + {queItem.likes}</div>
                 <div className="buttonContainer">
-                <button onClick={() => upVoteQueue(queItem.pick_id)}>
-                  <FontAwesomeIcon icon={faThumbsUp} color="white" size=".5x" className="quedLikeButton"/>
-                </button>
-                <button onClick={() => downVoteQueue(queItem.pick_id)}>
-                  <FontAwesomeIcon icon={faThumbsDown}  color="white" size=".5x"/>
-                </button>
+                  <button onClick={() => upVoteQueue(queItem.pick_id)}>
+                    <FontAwesomeIcon
+                      icon={faThumbsUp}
+                      color="white"
+                      size="1x"
+                      className="quedLikeButton"
+                    />
+                  </button>
+                  <button onClick={() => downVoteQueue(queItem.pick_id)}>
+                    <FontAwesomeIcon
+                      icon={faThumbsDown}
+                      color="white"
+                      size="1x"
+                    />
+                  </button>
                 </div>
-                
               </div>
             );
           })}
