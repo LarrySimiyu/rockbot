@@ -119,7 +119,7 @@ export default function NowPlaying({ que, setQue }) {
       <div className="nowPlayingInfo">
         <img
           src={nowPlaying?.artwork_small}
-          className="artistImage"
+          className="nowPlayingArtistImage"
           alt="Art Work"
         />
         <div className="nowPlayingDetails">
