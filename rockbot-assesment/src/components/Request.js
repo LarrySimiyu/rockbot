@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const topArtistsEndPoint = "https://api.rockbot.com/v3/engage/top_artists";
@@ -11,6 +12,8 @@ export default function Request({ que, setQue }) {
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  const history = useHistory();
 
   // To fetch top artists, pass API key to authorization header.
   const fetchTopArtists = () => {
@@ -61,6 +64,7 @@ export default function Request({ que, setQue }) {
 
   // Requested artist is passed by passing the current selected artist state into params key artist_id
   const requestArtist = () => {
+    console.log(selectedArtist);
     return axios
       .post(
         requestArtistEndPoint,
@@ -75,6 +79,7 @@ export default function Request({ que, setQue }) {
         }
       )
       .then(({ data }) => {
+        history.push("/");
         return data;
       })
       .catch((error) => {
@@ -105,6 +110,7 @@ export default function Request({ que, setQue }) {
         <div className="artistsHeaderContainer">
           <div className="artistsHeader">Top Artists</div>
           <button
+            disabled={selectedArtist === null ? true : false}
             onClick={() => requestArtist()}
             className={
               selectedArtist !== null ? "filledRequestButton" : "requestButton"
