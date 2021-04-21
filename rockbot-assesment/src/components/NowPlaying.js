@@ -95,7 +95,13 @@ export default function NowPlaying({ que, setQue }) {
         }
       )
       .then(({ data }) => {
-        return data.response;
+        console.log(data.response, "just upvoted");
+        let response = data.response;
+
+        setQue(response.queue);
+        setnowPlaying(response.now_playing);
+
+        return response;
       });
   };
 
@@ -121,8 +127,11 @@ export default function NowPlaying({ que, setQue }) {
   // When compnent mounts data is immediately fetched for rendering
   useEffect(() => {
     fetchNowPlayingData();
-  }, []);
 
+    setInterval(() => {
+      fetchNowPlayingData();
+    }, 30000);
+  }, []);
   return (
     <div className="nowPlayingPage">
       <div className="rockbotHeader">
@@ -154,12 +163,11 @@ export default function NowPlaying({ que, setQue }) {
         <div className="queItemsContainer">
           {que.map((queItem, idx) => {
             return (
-              <div className="quedItems" key={idx}>
+              <div className="quedItem" key={idx}>
                 <div className="quedArtistAndSongContainer">
                   <div className="quedArtist">{queItem.artist}</div>
                   <div className="quedSong">{queItem.song}</div>
                 </div>
-                <div className="quedLikes"> + {queItem.likes}</div>
                 <div className="buttonContainer">
                   <button onClick={() => upVoteQueue(queItem.pick_id)}>
                     <FontAwesomeIcon
@@ -169,6 +177,8 @@ export default function NowPlaying({ que, setQue }) {
                       className="quedLikeButton"
                     />
                   </button>
+                  <div className="quedLikes"> + {queItem.likes}</div>
+
                   <button onClick={() => downVoteQueue(queItem.pick_id)}>
                     <FontAwesomeIcon
                       icon={faThumbsDown}
