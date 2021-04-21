@@ -60,7 +60,7 @@
   overflow: scroll;
 }
 
-.topArtistsContainer::-webkit-scrollbar {
+.artistsContainer::-webkit-scrollbar {
   display: none;
 }
 

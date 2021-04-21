@@ -27,6 +27,7 @@
   display: flex;
   overflow: scroll;
   flex-direction: column;
+
 }
 
 .queItemsContainer::-webkit-scrollbar {
@@ -41,7 +42,7 @@
   width: 80%;
   align-items: flex-start;
 }
-.quedItems {
+.quedItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,14 +76,29 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
 .buttonContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonContainer button .fa-thumbs-down {
   border: 1px solid white;
   border-radius: 50%;
   padding: 10px;
+  
 }
 
 .buttonContainer button .fa-thumbs-up {
