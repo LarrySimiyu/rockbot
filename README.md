@@ -9,6 +9,8 @@
     headers: {
           authorization: process.env.REACT_APP_API_KEY,
         }
-        ```
         
-6. Run `npm start`
+    ```
+5. Create a file in the root folder with the name `.env`
+6. Add `REACT_APP_API_KEY=API KEY`, make sure there are no spaces and no single or double quotation marks.        
+7. Run `npm start`
